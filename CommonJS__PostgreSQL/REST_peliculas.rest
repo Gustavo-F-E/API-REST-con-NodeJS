@@ -1,0 +1,32 @@
+GET http://localhost:3000/movies
+###
+GET http://localhost:3000/movies/33
+###
+
+POST http://localhost:3000/movies
+Content-Type: application/json
+
+{
+  "ruta_img_peliculas": "11",
+  "titulo": "11",
+  "descripcion": "11",
+  "link": "11",
+  "categoria": "11",
+  "apto_menores": "11"
+}
+###
+GET http://localhost:3000/movies/41
+###
+PUT http://localhost:3000/movies/41
+Content-Type: application/json
+
+{
+  "ruta_img_peliculas": "55",
+  "titulo": "55",
+  "descripcion": "55",
+  "link": "55",
+  "categoria": "55",
+  "apto_menores": "55"
+}
+###
+DELETE http://localhost:3000/movies/41

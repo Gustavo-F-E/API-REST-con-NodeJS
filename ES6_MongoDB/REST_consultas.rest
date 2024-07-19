@@ -1,0 +1,28 @@
+GET http://localhost:3000/consultas
+###
+GET http://localhost:3000/consultas/5
+
+###
+POST http://localhost:3000/consultas
+Content-Type: application/json
+
+{
+    "_id": "5",
+    "nombre_y_apellido": "Cocho Lopez",
+    "tipo_consulta": "Nada",
+    "URL_captura_problema": "URL3",
+    "descripcion_problema": "###"
+}
+###
+
+PUT http://localhost:3000/consultas/4
+Content-Type: application/json
+
+{
+    "nombre_y_apellido": "Juan Perez",
+    "tipo_consulta": "Técnica",
+    "URL_captura_problema": "URL999",
+    "descripcion_problema": "Esto es Postman"
+}
+###
+DELETE http://localhost:3000/consultas/5

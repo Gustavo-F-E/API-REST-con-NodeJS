@@ -1,0 +1,40 @@
+GET http://localhost:3000/consultas
+###
+GET http://localhost:3000/movies
+###
+GET http://localhost:3000/movies/33
+###
+GET http://localhost:3000/series
+###
+GET http://localhost:3000/series/2
+###
+GET http://localhost:3000/usuario
+###
+GET http://localhost:3000/usuario/gustavo
+###
+GET http://localhost:3000/consultas/2
+###
+
+POST http://localhost:3000/consultas
+Content-Type: application/json
+
+{
+    "nombre_y_apellido": "Cocho Lopez",
+    "tipo_consulta": "Nada",
+    "URL_captura_problema": "URL3",
+    "descripcion_problema": "###"
+}
+###
+
+PUT http://localhost:3000/consultas/2
+Content-Type: application/json
+
+{
+    "nombre_y_apellido": "Juan Perez",
+    "tipo_consulta": "Técnica",
+    "URL_captura_problema": "URL45",
+    "descripcion_problema": "Esto es Postman"
+}
+###
+DELETE http://localhost:3000/consultas/12
+

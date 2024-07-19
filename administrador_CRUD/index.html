@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Administrador</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Administrador de la base de datos de la API Rest</h1>
+  <p>Según el servidor API que esté abierto en este momento, puedo acceder a alguna de las bases de datos</p>
+  <br>
+  <form id="apiForm">
+    <label for="method">Método:</label>
+    <select id="method">
+      <option value="GET">GET</option>
+      <option value="POST">POST</option>
+      <option value="PUT">PUT</option>
+      <option value="DELETE">DELETE</option>
+    </select>
+    
+    <label for="table">Tabla:</label>
+    <select id="table">
+      <option value="consultas">Consultas</option>
+      <option value="movies">Películas</option>
+      <option value="series">Series</option>
+      <option value="usuario">Usuarios</option>
+    </select>
+    
+    <label id="showAll2" for="showAll">
+      <input type="checkbox" id="showAll">
+      Mostrar todos los registros
+    </label>
+    
+    <div id="idField">
+      <label for="id">ID:</label>
+      <input type="text" id="id">
+    </div>
+    
+    <div id="jsonField">
+      <label for="jsonData">Datos (JSON):</label>
+      <textarea id="jsonData" rows="10" cols="30"></textarea>
+    </div>
+    
+    <button type="submit">Enviar</button>
+  </form>
+  <br>
+  <table id="datos">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nombre y Apellido</th>
+        <th>Tipo de Consulta</th>
+        <th>URL Captura Problema</th>
+        <th>Descripción del Problema</th>
+      </tr>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
+  <script src="./index.js" type="module"></script>
+  <script type="module">
+    import handleSubmit from './index.js';
+
+    document.getElementById('apiForm').addEventListener('submit', handleSubmit);
+  </script>
+</body>
+</html>

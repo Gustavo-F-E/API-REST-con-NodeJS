@@ -1,0 +1,27 @@
+GET http://localhost:3000/usuario
+###
+GET http://localhost:3000/usuario/gustavo
+###
+
+POST http://localhost:3000/usuario
+Content-Type: application/json
+
+{
+  "username": "nuevo_usuario",
+  "email": "mail_usuario@mail.com",
+  "password": "999",
+  "apto_menores": "YES"
+}
+###
+
+PUT http://localhost:3000/usuario/nuevo_usuario
+Content-Type: application/json
+
+{
+  "username": "viejo_usuario",
+  "email": "mail_usuario@mail.com",
+  "password": "123456",
+  "apto_menores": "YES"
+}
+###
+DELETE http://localhost:3000/usuario/viejo_usuario

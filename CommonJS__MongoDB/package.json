@@ -1,0 +1,23 @@
+{
+  "name": "clase-29",
+  "version": "1.0.0",
+  "main": "server_ES6.js",
+  "type": "module",
+  "scripts": {
+    "start": "node --watch src/server_ES6.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "express": "^4.19.2",
+    "mongodb": "^6.8.0",
+    "mongoose": "^8.5.1",
+    "mysql2": "^3.10.1",
+    "pg": "^8.12.0",
+    "sqlite": "^5.1.1",
+    "sqlite3": "^5.1.7"
+  }
+}
