@@ -1,116 +1,91 @@
-// src/controllers/movieController.js
+const Peliculas = require('../db/db_peliculas.js');
 
-/**
- * El controlador es el que tendrá los cambios más importantes 
- * y es el que hará el tratamiento de la información.
- * En este archivo tenemos que codificar los métodos
- * .getAllMovies
- * .getMovieById
- * .createMovie
- * .updateMovie
- * .deleteMovie
- */
-
-//1- Importamos el módulo propio db
-// El objeto db posee los métodos para conectar con la base de datos. 
-// Es la conexión a la base de datos.
-const db = require('../db/db_commonJS');
-
-//2- Método para obtener todas las peliculas
-const getAllMovies = (req, res) => {
-    // Creamos una consulta
-    const sql = 'SELECT * FROM peliculas';
-    console.log("esta es la db: " , db)
-    // Utilizamos .query para enviar la consulra a la bbdd
-    // Primer parametro la consulta, segundo una función callback
-    db.query(sql, (err, results) => {
-        //si sucede algun error
-        if (err) {console.log(err);return;} 
-        //enviamos el resultado en formato json
-        res.json(results);
-    });
+const getAllMovies = async (req, res) => {
+  try {
+    const peliculas = await Peliculas.find();
+    res.json(peliculas);
+  } catch (err) {
+    console.error('Error en getAllMovies:', err);
+    res.status(500).json({ message: err.message });
+  }
 };
 
-//3- Método para obtener peliculas con consultas parametrizadas
-const getMovieById = (req, res) => {
-    // Tomamos la solicitud y extraemos su id
-    // Esta es una notacion de desestructuración {id}
-    // en la req viaja /movies/1, la expresion {id} estrae el nro 1 de la ruta
-    // y la almacena dentro de la variable id
-    const { id } = req.params;
-
-    // Creamos la consulta con marcador de posición
-    const sql = 'SELECT * FROM peliculas WHERE id = ?';
-
-    // Los marcadores de posición se utilizan para evitar la inyección de SQL, 
-    // ya que los valores se escapan automáticamente.
-
-    // Interactuamos con la bbdd, pasamos la consulta anterior
-    db.query(sql, [id], (err, result) => {
-        //en caso de error
-        if (err) {console.log(err);return;} 
-        //enviamos en formato json
-        res.json(result);
-    });
+const getMovieById = async (req, res) => {
+  try {
+    const peliculas = await Peliculas.findById(req.params.id);
+    if (peliculas == null) {
+      return res.status(404).json({ message: 'No de encuentra la pelicula buscada' });
+    }
+    res.json(peliculas);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
 };
 
-//4- Método para crear una película
-const createMovie = (req, res) => {
-    // Desestructuramos la request
-    const { ruta_img_peliculas, titulo, descripcion, link, categoria, apto_menores } = req.body;
-    // Creamos la consulta con marcadores de posición
-    const sql = 'INSERT INTO peliculas (ruta_img_peliculas, titulo, descripcion, link, categoria, apto_menores) VALUES (?, ?, ?)';
-    // Pasamos la consulta
-    //.query(consulta, array_con_valores, funcion_callback)
-    db.query(sql, [ruta_img_peliculas, titulo, descripcion, link, categoria, apto_menores], (err, result) => {
-        //en caso de error
-        if (err)  {console.log(err);return;} 
-        //enviamos mensaje de exito con info de la peli
-        res.json({ message: 'Película creada', movieId: result.insertId });
-    });
+const createMovie = async (req, res) => {
+      const peliculas = new Peliculas({
+        _id: req.body._id,
+        ruta_img_peliculas: req.body.ruta_img_peliculas,
+        titulo: req.body.titulo,
+        descripcion: req.body.descripcion,
+        link: req.body.link,
+        categoria: req.body.categoria,
+        apto_menores: req.body.apto_menores
+      });
+    
+      try {
+        const newPeliculas = await peliculas.save();
+        res.status(201).json(newPeliculas);
+      } catch (err) {
+        res.status(400).json({ message: err.message });
+      }
 };
 
-//5- Método para modificar una película (COMPLETAR)
-const updateMovie = (req, res)=>{
-    // Desestructuramos la peticion
-    // const id = req.params.id
-    const {id} = req.params;
-    const {ruta_img_peliculas, titulo, descripcion, link, categoria, apto_menores} = req.body;
-    // const title = req.body.title;
+const updateMovie = async (req, res) => {
+  try {
+    const peliculas = await Peliculas.findById(req.params.id);
 
-    //Consulta SQL con marcadores de posicion
-    const sql = 'UPDATE peliculas SET ruta_img_peliculas = ?, titulo = ?, descripcion = ?, link = ?, categoria = ?, apto_menores = ? WHERE id = ?';
+    if (!peliculas) {
+      return res.status(404).json({ message: 'La pelicula que desea editar no se encuentra en la base de datos' });
+    }
 
-    //Pasamos la consulta
-    db.query(sql, [ruta_img_peliculas, titulo, descripcion, link, categoria, apto_menores, id],(err, result)=>{
-        //si hay error
-        if(err){
-            console.log(err);
-            return;
-        }
-        //si todo va bien
-        res.json({mensaje: "Película actualizada"});
-    })
-}
+    if (req.body.ruta_img_peliculas != null) {
+      peliculas.ruta_img_peliculas = req.body.ruta_img_peliculas;
+    }
+    if (req.body.titulo != null) {
+      peliculas.titulo = req.body.titulo;
+    }
+    if (req.body.descripcion != null) {
+      peliculas.descripcion = req.body.descripcion;
+    }
+    if (req.body.link != null) {
+      peliculas.link = req.body.link;
+    }
+    if (req.body.categoria != null) {
+      peliculas.categoria = req.body.categoria;
+    }
+    if (req.body.apto_menores != null) {
+      peliculas.apto_menores = req.body.apto_menores;
+    }
 
-//6- Método para borrar una película(COMPLETAR)
-const deleteMovie = (req, res)=>{
-    // Desestructuramos la consulta
-    const {id} = req.params;
+    const updatedPelicula = await peliculas.save();
+    res.json(updatedPelicula);
+  } catch (err) {
+    res.status(400).json({ message: err.message });
+  }
+};
 
-    // Consulta sql para borrar una peli
-    const sql = 'DELETE FROM peliculas WHERE id = ?';
-
-    // Enviamos la consulta a la bbdd
-    db.query(sql,[id],(err,result)=>{
-        //si hay error
-        if(err){
-            console.log(err);
-            return;
-        }
-        //si todo va bien
-        res.json({mensaje: "Película borrada con éxito"});
-    });
+const deleteMovie = async (req, res) => {
+  try {
+    const peliculas = await Peliculas.findById(req.params.id);
+    if (!peliculas) {
+      return res.status(404).json({ message: 'Pelicula no hallada' });
+    }
+    await Peliculas.deleteOne({ _id: req.params.id });
+    res.json({ message: 'Pelicula borrada' });
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
 };
 
 //7- Exportamos los módulos que serán utilizados en moviesRouter.js

@@ -1,9 +1,9 @@
-import express from 'express';
-import mongoose from 'mongoose';
-import consultasRoutes from '../routes/consultasRouter_ES6.js';
-import movieRoutes from '../routes/moviesRouter_ES6.js';
-import serieRoutes from '../routes/seriesRouter_ES6.js';
-import usuariosRoutes from '../routes/usuariosRouter_ES6.js';
+const express = require('express');
+const mongoose = require('mongoose');
+const consultasRoutes = require('../routes/consultasRouter_CommonJS.js');
+const movieRoutes = require('../routes/moviesRouter_CommonJS.js');
+const serieRoutes = require('../routes/seriesRouter_CommonJS.js');
+const usuariosRoutes = require('../routes/usuariosRouter_CommonJS.js');
 
 const app = express();
 

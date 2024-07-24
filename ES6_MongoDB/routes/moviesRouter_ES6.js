@@ -1,17 +1,13 @@
-// src/routes/movieRoutes.js
-/**
- * Enrutador 
- * Endpoints
- */
-
 // 1- Importamos el módulo
 import express from 'express';
 
-// 2- Instanciamos Router de express
-const router = express.Router();
+
 
 // 3- Importamos el módulo propio movieController (a realizarlo a futuro)
 import movieController from '../controllers/movieController_ES6.js';
+
+// 2- Instanciamos Router de express
+const router = express.Router();
 
 // 4- En movieController programaremos el módulo junto a métodos GET, POST, PUT, DELETE
 // Dejaremos sólo la declaración de las rutas, con sus métodos 

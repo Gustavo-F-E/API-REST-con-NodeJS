@@ -11,7 +11,7 @@ const express = require("express");
 const router = express.Router();
 
 // 3- Importamos el módulo propio movieController (a realizarlo a futuro)
-const serieController = require('../controllers/serieController_commonJS');
+const serieController = require('../controllers/serieController_CommonJS.js');
 
 // 4- En movieController programaremos el módulo junto a métodos GET, POST, PUT, DELETE
 // Dejaremos sólo la declaración de las rutas, con sus métodos 

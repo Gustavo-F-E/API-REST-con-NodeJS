@@ -1,14 +1,6 @@
-// src/routes/movieRoutes.js
-/**
- * Enrutador 
- * Endpoints
- */
-
 // 1- Importamos el módulo
 //const express = require("express");
 import express from 'express';
-
-
 
 // 3- Importamos el módulo propio movieController (a realizarlo a futuro)
 import consultasController from '../controllers/consultasController_ES6.js';
@@ -32,7 +24,7 @@ router.put('/:id', consultasController.updateConsulta);
 router.delete('/:id', consultasController.deleteConsulta);
 
 //5- Exportamos el módulo
-export default { router };
+export default router;
 
 //6- Pasamos a configurar movieController.js
 

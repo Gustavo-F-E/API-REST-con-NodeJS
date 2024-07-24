@@ -1,10 +1,9 @@
 {
-  "name": "clase-29",
+  "name": "mongodb_es6",
   "version": "1.0.0",
-  "main": "server_ES6.js",
-  "type": "module",
+  "main": "server.js",
   "scripts": {
-    "start": "node --watch src/server_ES6.js",
+    "start": "node --watch src/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -12,12 +11,9 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
     "express": "^4.19.2",
-    "mongodb": "^6.8.0",
-    "mongoose": "^8.5.1",
-    "mysql2": "^3.10.1",
-    "pg": "^8.12.0",
-    "sqlite": "^5.1.1",
-    "sqlite3": "^5.1.7"
+    "mongoose": "^8.5.1"
   }
 }
