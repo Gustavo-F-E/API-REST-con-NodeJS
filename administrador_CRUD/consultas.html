@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Consulta a base de datos</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <h1 id="h1">Administrador de la base de datos de la API Rest</h1>
+  <br>
+  <div id="enlaces">
+    <a href="#getById">Tabla del método Get By ID</a>
+    <a href="#POST">Tabla del método POST</a>
+    <a href="#PUT">Tabla del método PUT</a>
+    <a href="#DELETE">Tabla del método DELETE</a>
+    <a href="#getAll">Tabla del método Get All</a>
+  </div>
+  <section id="metodo_rest">
+    <div id="getById">
+      <h2>Método Get By ID</h2>
+      <label for="getById">ID:</label>
+      <input type="text" id="getByIdInput" placeholder="Ingrese ID">
+      <button id="fetchGetByIDBtn">Get By Id</button>
+      <table id="getByIdTable">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nombre y apellido</th>
+            <th>Tipo de consulta</th>
+            <th>URL captura del problema</th>
+            <th>Descripción del problema</th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+    </div>
+    <div id="POST">
+      <h2>Método POST</h2>
+      <button id="fetchPostBtn">Post</button>
+      <table id="postTable">
+        <thead>
+          <tr>
+            <th>Nombre y apellido</th>
+            <th>Tipo de consulta</th>
+            <th>URL captura del problema</th>
+            <th>Descripción del problema</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><input type="text" id="post_nombre_y_apellido" name="post_nombre_y_apellido" placeholder="Nombre y apellido" required></td>
+            <td><input type="text" id="post_tipo_consulta" name="post_tipo_consulta" placeholder="Tipo de consulta" required></td>
+            <td><input type="text" id="post_URL_captura_problema" name="post_URL_captura_problema" placeholder="URL" required></td>
+            <td><input type="text" id="post_descripcion_problema" name="post_descripcion_problema" placeholder="Decripción"required></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div id="PUT">
+      <h2>Método PUT</h2>
+      <label for="putId">ID:</label>
+      <input type="text" id="putIdInput" placeholder="Ingrese ID">
+      <button id="fetchPutBtn">Put (update)</button>
+      <table id="putTable">
+        <thead>
+          <tr>
+            <th>Nombre y apellido</th>
+            <th>Tipo de consulta</th>
+            <th>URL captura del problema</th>
+            <th>Descripción del problema</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><input type="text" id="put_nombre_y_apellido" name="put_nombre_y_apellido" placeholder="Nombre y apellido" required></td>
+            <td><input type="text" id="put_tipo_consulta" name="put_tipo_consulta" placeholder="Tipo de consulta" required></td>
+            <td><input type="text" id="put_URL_captura_problema" name="put_URL_captura_problema" placeholder="URL" required></td>
+            <td><input type="text" id="put_descripcion_problema" name="put_descripcion_problema" placeholder="Decripción"required></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div id="DELETE">
+      <h2>Método Delete</h2>
+      <label for="deleteId">ID:</label>
+      <input type="text" id="delIdInput" placeholder="Ingrese ID">
+      <button id="fetchDelBtn">Borrar registro</button>
+  
+    </div>
+    <div id="getAll">
+      <h2>Método Get All</h2>
+      <button id="fetchGetAllBtn">Get All</button>
+      <table id="getAllTable">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nombre y apellido</th>
+            <th>Tipo de consulta</th>
+            <th>URL captura del problema</th>
+            <th>Descripción del problema</th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+  
+    </div>
+  </section>
+
+  <script src="./js/index.js" type="module"></script>
+</body>
+</html>

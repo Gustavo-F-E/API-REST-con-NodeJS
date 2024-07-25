@@ -7,7 +7,7 @@ POST http://localhost:3000/usuario
 Content-Type: application/json
 
 {
-  "username": "nuevo_usuario",
+  "username": "nuevo_usuarioooo",
   "email": "mail_usuario@mail.com",
   "password": "999",
   "apto_menores": "YES"

@@ -1,0 +1,63 @@
+h1, h2{
+  text-align: center;
+}
+
+h2{
+  margin-top: 2rem;
+}
+
+a{
+  color: rgb(116, 152, 251);
+  font-weight: bold;
+}
+
+body{
+  background-color: #555;
+  color: rgb(255,255,255);
+}
+
+#getAll, #getById, #enlaces, #POST, #PUT, #DELETE, #tabla_DB{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+#getAllTable, #getByIdTable, #postTable, #putTable{
+  width: 80%;
+  border-collapse: collapse;
+}
+#getAllTable, #getByIdTable, th, td {
+  border: 1px solid rgb(79, 138, 210);
+}
+th, td {
+  padding: 8px;
+  text-align: left;
+}
+
+th{
+  background-color: rgb(0, 0, 39);
+  font-weight: 800;
+  color: #fff;
+}
+
+tr:nth-child(even) {
+  background-color: #aaa; /* Color de fondo para filas pares */
+  color: black;
+}
+tr:nth-child(odd) {
+  background-color: #fff; /* Color de fondo para filas impares */
+  color: black;
+}
+button{
+  margin: 1rem 0rem;
+  padding: 0.3rem;
+}
+
+#tabla_DB{
+  margin: 2rem 0rem;
+}
+
+#tableSelect{
+  padding: 0.3rem;
+}
