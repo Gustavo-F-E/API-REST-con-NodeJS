@@ -23,4 +23,12 @@ Content-Type: application/json
     "descripcion_problema": "Esto es Postman"
 }
 ###
+
+Patch http://localhost:3000/consultas/2
+Content-Type: application/json
+
+{
+    "descripcion_problema": "anda re mal"
+}
+###
 DELETE http://localhost:3000/consultas/15

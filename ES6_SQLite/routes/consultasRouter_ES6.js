@@ -25,6 +25,8 @@ router.get('/:id', consultasController.getConsultaById);
 router.post('/', consultasController.createConsulta);
 //Ruta para actualizar una consulta
 router.put('/:id', consultasController.updateConsulta);
+//Ruta para actualizar parcialmente una consulta
+router.patch('/:id', consultasController.patchConsulta);
 //Ruta para borrar una consulta
 router.delete('/:id', consultasController.deleteConsulta);
 

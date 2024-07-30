@@ -1,0 +1,313 @@
+/*Resets*/
+/* ********** Resets ********** */
+html {
+  box-sizing: border-box;
+  font-family: var(--font);
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  overflow-x: hidden;
+  color: rgba(255,255,255,1);
+  background-color: rgba(50,50,50,1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+    article{
+      width: 100%;
+    }
+  
+}
+
+h1{
+  padding: 2rem 0rem;
+  font-size: 2.5rem;
+}
+
+.no_display{
+  display: none;
+}
+.display{
+  display: grid;
+}
+
+#selector_metodos, #selector_tablas, #render-tablas{
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+}
+
+#selector_metodos label, #selector_tablas label{
+  grid-column: 3 / 6;
+  text-align: right;
+  margin: 1rem 0rem;
+  align-self: center;
+}
+
+#selector_metodos select, #selector_tablas select{
+  grid-column: 7 / 10;
+  width: 80%; 
+  margin: 1rem 0rem;
+  align-self: center;
+}
+
+#avisos{
+  margin: 2rem 0rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+/*Estilos flechas selectores*/
+  /* Estilo básico para el select */
+  #metodo, #tabla {
+    width: 80%; /* Ajusta el ancho según sea necesario */
+    padding: 0.5rem; /* Espacio interno */
+    font-size: 1rem; /* Tamaño de fuente */
+    border: 0.1rem solid #ccc; /* Borde */
+    border-radius: 1rem; /* Bordes redondeados */
+    background-color: #f9f9f9; /* Color de fondo */
+    color: #333; /* Color del texto */
+    appearance: none; /* Remueve el estilo por defecto del navegador */
+    text-align: center;
+  }
+
+  #metodo:hover, #tabla:hover {
+    background-color: #999; /* Color de fondo al pasar el cursor */
+    color: #fff;
+    border: #999; /* Borde */
+    cursor: pointer;
+  }
+
+  /* Icono de la flecha en el select */
+  #metodo::-ms-expand, #tabla::-ms-expand{
+    display: none; /* Para ocultar la flecha en Internet Explorer */
+  }
+
+  /* Estilo del contenedor para el icono personalizado */
+  .custom-select-container {
+    position: relative; /* Necesario para posicionar el icono */
+    display: inline-block; /* Para que el contenedor se ajuste al tamaño del select */
+  }
+
+  /* Icono personalizado */
+  .custom-select-container::after {
+    content: '▼'; /* Puedes usar un icono o un símbolo como flecha */
+    font-size: 12px; /* Tamaño del icono */
+    color: #333; /* Color del icono */
+    position: absolute; /* Posiciona el icono */
+    right: 10px; /* Alinea a la derecha */
+    top: 50%; /* Centra verticalmente */
+    transform: translateY(-50%); /* Centra verticalmente */
+    pointer-events: none; /* El icono no intercepta eventos del ratón */
+  }
+
+  #render-tablas{
+    section{
+      grid-column: 2 / 11;
+    }
+  }
+
+  #get_all_consultas{
+    grid-template-rows: 1fr auto;
+    grid-template-columns: repeat(12, 1fr);
+    h2{
+      text-align: center;
+      grid-row: 1 / 2;
+      grid-column: 1 / 9;
+      margin: 1rem 0rem;
+      align-self: center;
+    }
+
+    #get_all_consultas_fetch_btn{
+      grid-row: 1 / 2;
+      grid-column: 10 / 12;
+      margin: 1rem 0rem;
+      align-self: center;
+    }
+
+    #get_all_consultas_table{
+      grid-row: 2 / 3;
+      grid-column: 1 / 12;
+      margin-top: 0.5rem;
+    }
+  }
+
+  /*Estilos de botones*/
+  /* Estilo básico para el botón */
+#get_all_consultas_fetch_btn, #get_by_id_consultas_fetch_btn, #put_consultas_fetch_btn, #patch_consultas_fetch_btn, #delete_consultas_fetch_btn, #post_consultas_fetch_btn {
+  background-color: #f9f9f9; /* Color de fondo */
+  color: #333; /* Color del texto */
+  padding: 0.5rem; /* Espaciado interno */
+  text-align: center; /* Alineación del texto */
+  text-decoration: none; /* Sin subrayado */
+  display: inline-block; /* Display inline-block */
+  font-size: 1rem; /* Tamaño de la fuente */
+  margin: 0.2rem 0.1rem; /* Márgenes */
+  border: none; /* Sin bordes */
+  border-radius: 1rem; /* Bordes redondeados */
+  cursor: pointer; /* Cambia el cursor al pasar por encima */
+  transition: background-color 0.3s ease; /* Transición para el cambio de color de fondo */
+}
+
+/* Estilo para el botón al pasar el cursor por encima */
+#get_all_consultas_fetch_btn:hover, #get_by_id_consultas_fetch_btn:hover, #put_consultas_fetch_btn:hover, #patch_consultas_fetch_btn:hover, #delete_consultas_fetch_btn:hover, #post_consultas_fetch_btn:hover {
+  background-color: #999; /* Color de fondo al pasar el cursor */
+  color: #fff;
+}
+
+/* Estilo para el botón al hacer clic */
+#get_all_consultas_fetch_btn:active, #get_by_id_consultas_fetch_btn:active, #put_consultas_fetch_btn:active, #patch_consultas_fetch_btn:active, #delete_consultas_fetch_btn:active, #post_consultas_fetch_btn:active {
+  background-color: #999; /* Color de fondo al pasar el cursor */
+  color: #fff;/* Color de fondo al hacer clic */
+  transform: translateY(2px); /* Mover el botón hacia abajo */
+}
+
+/* Estilo para el botón al tener el foco */
+#get_all_consultas_fetch_btn:focus, #get_by_id_consultas_fetch_btn:focus, #put_consultas_fetch_btn:focus, #patch_consultas_fetch_btn:focus, #delete_consultas_fetch_btn:focus, #post_consultas_fetch_btn:focus {
+  outline: none; /* Elimina el contorno del botón */
+  box-shadow: 0 0 0 3px rgba(66, 133, 244, 0.6); /* Sombra alrededor del botón */
+}
+
+#get_all_consultas_table{
+  tbody{
+    td{
+      text-align: center;
+    }
+  }
+}
+
+#get_by_id_consultas{
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: 1fr 1fr 4fr;
+  h2{
+    grid-row: 1 / 2;
+    grid-column: 1 / 12;
+  }
+  label[for="get_by_id_consultas"] {
+    grid-row: 2 / 3;
+    grid-column: 1 / 3;
+    text-align: right;
+    align-self: center;
+  }
+  #get_by_id_consultas_input{
+    grid-row: 2 / 3;
+    grid-column: 3 / 5;
+    text-align: center;
+    align-self: center;
+    margin: 0rem 0.5rem;
+  }
+  #get_by_id_consultas_fetch_btn{
+    grid-row: 2 / 3;
+    grid-column: 8 / 10;
+    text-align: center;
+    align-self: center;
+  }
+  form{
+    grid-row: 3 / 4;
+    grid-column: 1 / 12;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: 2rem auto;
+  }
+  table{
+    grid-row: 1 / 2;
+    grid-column: 1 / 12;
+    height: 2rem;
+    margin: 0;
+    padding: 0;
+    thead{
+      th{
+        text-align: center;
+        align-self: end;
+      }
+    }
+    tbody{
+      vertical-align:top;
+      td{
+        text-align: center;
+        align-self: start;
+        width: 20%;
+      }
+    }
+  }
+  #put_consultas_fetch_btn{
+    grid-column: 1 / 4;
+    grid-row: 2 / 3;
+    text-align: center;
+    align-self: center;
+    justify-self: center;
+    width: 40%;
+  }
+  #patch_consultas_fetch_btn{
+    grid-column: 4 / 8;
+    grid-row: 2 / 3;
+    text-align: center;
+    align-self: center;
+    justify-self: center;
+    width: 40%;
+  }
+  #delete_consultas_fetch_btn{
+    grid-column: 8 / 12;
+    grid-row: 2 / 3;
+    text-align: center;
+    align-self: center;
+    justify-self: center;
+    width: 40%;
+  }
+    
+}
+
+
+
+/* Estilos para el input */
+input[type="text"] {
+  width: 100%; /* Ancho completo del contenedor padre */
+  padding: 10px; /* Espaciado interno */
+  margin: 10px 20px; /* Espaciado externo */
+  box-sizing: border-box; /* Incluye el relleno y borde en el ancho y alto */
+  border: 1px solid #ccc; /* Borde gris claro */
+  border-radius: 4px; /* Bordes redondeados */
+  font-size: 16px; /* Tamaño de fuente */
+  font-family: Arial, sans-serif; /* Familia de fuente */
+}
+
+/* Estilo para el placeholder */
+input[type="text"]::placeholder {
+  color: #888; /* Color del placeholder */
+  font-style: italic; /* Estilo de fuente */
+}
+
+/* Estilo para el input en foco */
+input[type="text"]:focus {
+  border-color: #66afe9; /* Color del borde al enfocar */
+  outline: none; /* Eliminar el borde de enfoque predeterminado */
+  box-shadow: 0 0 8px rgba(102, 175, 233, 0.6); /* Sombra */
+}
+
+#post_consultas{
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: 1fr 1fr auto;
+  h2{
+    grid-row: 1 / 2;
+    grid-column: 1 / 12;
+  }
+  #post_consultas_fetch_btn{
+    grid-row: 2 / 3;
+    grid-column: 1 / 12;
+    width:40%;
+    align-self: center;
+    justify-self: center;
+  }
+  #post_consultas_table{
+    grid-row: 3 / 4;
+    grid-column: 1 / 12;
+  }
+}

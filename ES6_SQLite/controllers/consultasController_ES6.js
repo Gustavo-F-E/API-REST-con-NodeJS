@@ -60,6 +60,31 @@ const updateConsulta = async (req, res) => {
     }
 };
 
+const patchConsulta = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const fieldsToUpdate = req.body;
+        const fieldNames = Object.keys(fieldsToUpdate);
+
+        if (fieldNames.length === 0) {
+            return res.status(400).json({ message: "No fields to update" });
+        }
+
+        const fieldPlaceholders = fieldNames
+            .map((field) => `${field} = ?`)
+            .join(", ");
+        const fieldValues = Object.values(fieldsToUpdate);
+
+        const sql = `UPDATE consultas SET ${fieldPlaceholders} WHERE idconsultas = ?`;
+        await db.run(sql, [...fieldValues, id]);
+
+        res.json({ message: "Consulta actualizada" });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ message: "Error al actualizar la consulta" });
+    }
+};
+
 const deleteConsulta = async (req, res) => {
     try {
         const { id } = req.params;
@@ -76,6 +101,7 @@ export default {
   getConsultaById,
   createConsulta,
   updateConsulta,
+  patchConsulta,
   deleteConsulta
 };
 

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="css/consultas_2.css">
+</head>
+<body>
+  <h1>Administrador de la base de datos</h1>
+  <article id="avisos" class="no-display">
+    Elija un Método y una Tabla.
+  </article>
+  <article id="selector_metodos">
+    <label for="seleccionador">Selecciona método:</label>
+    <select id="metodo" name="metodo">
+      <option data-method value="no_metodo">--Método--</option>
+      <option data-method value="get_all">GET ALL</option>
+      <option data-method value="get_by_id">GET BY ID / PUT / PATCH / DELETE</option>
+      <option data-method value="post">POST</option>
+    </select>
+</article>
+
+<article  id="selector_tablas">
+  <label for="tabla">Elegir Tabla:</label>
+  <select id="tabla" name="tabla">
+    <option data-method value="no_tabla">--Tabla--</option>
+    <option data-table value="peliculas">Películas</option>
+    <option data-table value="series">Series</option>
+    <option data-table value="usuarios">Usuarios</option>
+    <option data-table value="consultas">Consultas</option>
+  </select>
+</article>
+
+<article id="render-tablas">
+  <section id="get_all_peliculas" class="no_display">GET ALL Películas</section>
+  <section id="get_by_id_peliculas" class="no_display">GET BY ID Películas</section>
+  <section id="put_peliculas" class="no_display">PUT Películas</section>
+  <section id="post_peliculas" class="no_display">POST Películas</section>
+  <section id="delete_peliculas" class="no_display">DELETE Películas</section>
+
+  <section id="get_all_series" class="no_display">GET ALL Series</section>
+  <section id="get_by_id_series" class="no_display">GET BY ID Series</section>
+  <section id="put_series" class="no_display">PUT Series</section>
+  <section id="post_series" class="no_display">POST Series</section>
+  <section id="delete_series" class="no_display">DELETE Series</section>
+
+  <section id="get_all_usuarios" class="no_display">GET ALL Usuarios</section>
+  <section id="get_by_id_usuarios" class="no_display">GET BY ID Usuarios</section>
+  <section id="put_usuarios" class="no_display">PUT Usuarios</section>
+  <section id="post_usuarios" class="no_display">POST Usuarios</section>
+  <section id="delete_usuarios" class="no_display">DELETE Usuarios</section>
+
+  <section id="get_all_consultas" class="no_display">
+    <h2>Método Get All - Tabla de 'Consultas'</h2>
+    <button id="get_all_consultas_fetch_btn">Get All</button>
+    <table id="get_all_consultas_table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nombre y apellido</th>
+          <th>Tipo de consulta</th>
+          <th>URL captura del problema</th>
+          <th>Descripción del problema</th>
+        </tr>
+      </thead>
+      <tbody>
+      </tbody>
+    </table></section>
+    <section id="get_by_id_consultas" class="no_display">
+      <h2>Método GET BY ID / PUT / PATCH / DELETE - Tabla de 'Consultas'</h2>
+      <label for="get_by_id_consultas">ID:</label>
+      <input type="text" id="get_by_id_consultas_input" placeholder="Ingrese ID">
+      <button id="get_by_id_consultas_fetch_btn">Get By Id</button>
+      <form id="edit_form" class="no_display">
+        <table>
+          <thead>
+            <tr>
+              <th><label for="put_consulta_nombre_y_apellido">Nombre y Apellido:</label></th>
+            <th><label for="put_consulta_tipo_consulta">Tipo de Consulta:</label></th>
+            <th><label for="put_consulta_URL_captura_problema">URL Captura del Problema:</label></th>
+            <th><label for="put_consulta_descripcion_problema">Descripción del Problema:</label></th>
+          </tr>
+          </thead>
+          <tbody>
+            <tr><td><input type="text" id="put_consulta_nombre_y_apellido"></td>
+            <td><input type="text" id="put_consulta_tipo_consulta"></td>
+            <td><input type="text" id="put_consulta_URL_captura_problema"></td>
+            <td><input type="text" id="put_consulta_descripcion_problema"></td></tr>
+          </tbody>
+        </table>
+
+        <button type="button" id="put_consultas_fetch_btn">Put</button>
+        <button type="button" id="patch_consultas_fetch_btn">Patch</button>
+        <button type="button" id="delete_consultas_fetch_btn">Delete</button>
+      </form>
+    </section>
+  <section id="post_consultas" class="no_display">
+    <h2>Método POST - Tabla de 'Consultas'</h2>
+    <button id="post_consultas_fetch_btn">Post</button>
+    <table id="post_consultas_table">
+      <thead>
+        <tr>
+          <th>Nombre y apellido</th>
+          <th>Tipo de consulta</th>
+          <th>URL captura del problema</th>
+          <th>Descripción del problema</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><input type="text" id="post_consultas_nombre_y_apellido" name="post_consultas_nombre_y_apellido" placeholder="Nombre y apellido" required></td>
+          <td><input type="text" id="post_consultas_tipo_consulta" name="post_consultas_tipo_consulta" placeholder="Tipo de consulta" required></td>
+          <td><input type="text" id="post_consultas_URL_captura_problema" name="post_consultas_URL_captura_problema" placeholder="URL" required></td>
+          <td><input type="text" id="post_consultas_descripcion_problema" name="post_consultas_descripcion_problema" placeholder="Decripción"required></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+</article>
+
+<script type="module" src="./js/index2.js"></script>
+</body>
+</html>
